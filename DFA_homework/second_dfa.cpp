@@ -23,12 +23,8 @@ consecutive b's.
 #define ERROR   3
 
 
-int main(){
-
+bool check_dfa(std::string cadena, int cadena_length){
     int the_state = Q0;
-    std::string cadena = "abaabab";
-    int cadena_length = cadena.length();
-
     for(int i = 0; i < cadena_length; i++){
         
 
@@ -50,10 +46,19 @@ int main(){
             break;
 
         }
-
     }
+    if(the_state==Q2) return true;
+    return false;
+};
 
-    if(the_state == Q2) std::cout << "Compatible string: " << cadena << "\n";
+int main(){
+
+    std::string cadena = "abaabab";
+    int cadena_length = cadena.length();
+
+    bool result = check_dfa(cadena, cadena_length);
+
+    if(result == true) std::cout << "Compatible string: " << cadena << "\n";
     else std::cout << "Incompatible string: " << cadena << "\n";
 
 

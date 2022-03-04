@@ -20,12 +20,8 @@ that recognizes all strings composed of 0's and 1's
 #define Q0  0
 #define Q1  1
 
-int main(){
-
+bool check_dfa(std::string cadena, int cadena_length){
         int state = Q0;
-        std::string cadena = "10100011100";
-        int cadena_length = cadena.length();
-
         for(int i = 0; i < cadena_length; i++){
 
 
@@ -42,9 +38,20 @@ int main(){
             }
 
         }
+        if(state == Q0) return true;
+        return false;
+};
+
+int main(){
+
+        int state = Q0;
+        std::string cadena = "10100011100";
+        int cadena_length = cadena.length();
+
+        bool result = check_dfa(cadena, cadena_length);
         
 
-        if(state == Q0) std::cout << "Compatible string: " << cadena << "\n";
+        if(result == true) std::cout << "Compatible string: " << cadena << "\n";
         else std::cout << "Incompatible string:" << cadena << std::endl;
 
 

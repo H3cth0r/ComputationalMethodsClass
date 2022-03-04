@@ -21,12 +21,9 @@ of 0's and 1's
 #define Q3      3
 
 
-int main(){
 
+bool check_dfa(std::string cadena, int cadena_length){
     int the_state = Q0;
-    std::string cadena = "010011";
-    int cadena_length = cadena.length();
-
     for(int i = 0; i < cadena_length; i++){
 
         switch(the_state){
@@ -51,12 +48,23 @@ int main(){
                 else if(cadena[i] == '1') the_state = Q1;
             break;
 
-
         }
 
     }
+    if(the_state == Q3) return true;
+    return false;
+};
 
-    if(the_state == Q3) std::cout << "Compatible string: " << cadena << "\n";
+
+int main(){
+
+    
+    std::string cadena = "010011";
+    int cadena_length = cadena.length();
+
+    bool result = check_dfa(cadena, cadena_length);
+
+    if(result == true) std::cout << "Compatible string: " << cadena << "\n";
     else std::cout << "Incompatible string: " << cadena << "\n";
 
     return 0;

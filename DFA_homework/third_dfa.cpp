@@ -68,4 +68,4 @@ int main(){
     else std::cout << "Incompatible string: " << cadena << "\n";
 
     return 0;
-}
+};

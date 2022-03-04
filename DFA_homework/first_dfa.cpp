@@ -14,9 +14,7 @@ I'll be using a custom Graph library.
 
 #include <iostream>
 #include <string>
-#include <stdio.h>
-#include <conio.h>
-#include <stdlib.h>
+
 
 
 
@@ -36,18 +34,19 @@ int main(){
                 case Q0:
                     if(cadena[i] == '1') state = Q0;
                     else if(cadena[i] == '0') state = Q1;
-                
+                break;
+
                 case Q1:
                     if(cadena[i] == '1') state = Q1;
                     else if(cadena[i] == '0') state = Q0;
-
+                break;
             }
 
         }
         
 
-        if(state == Q0) std::cout << "Compatible string" << "\n";
-        else std::cout << "Incompatible string" << std::endl;
+        if(state == Q0) std::cout << "Compatible string: " << cadena << "\n";
+        else std::cout << "Incompatible string:" << cadena << std::endl;
 
 
 

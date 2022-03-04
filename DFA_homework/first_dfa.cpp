@@ -7,8 +7,7 @@ Date:   03/03/2022
 This code is intended to represent the functioning
 of a DFA. In this case, the problem proposes a DFA
 that recognizes all strings composed of 0's and 1's
-, and so that there is an even number of 0's.
-I'll be using a custom Graph library. 
+, and so that there is an even number of 0's. 
 ===================================================
 */
 

@@ -1,0 +1,51 @@
+
+Uop:    Unary operators.
+
+
+L:      A++ lang.
+M:      Method.
+D:      Declarations.
+A:      Asignation.
+R:      Return.
+
+
+public string MyFunction(string a){
+    string c = "";
+    string x = "Hola";
+    c = x==a ? x + "Mundo" : x + a;
+    return c;
+}
+
+
+
+Define a grammar that generates A++ lang, that is a simplification of C# lang.
+It only uses the following operators {+, -, *, /, %, ?, :, =, ==}, using the
+same C# semantics. The languaje is composed of a single method, which only has
+delcaratiosn, assignments and always returns.
+
+operators           =   {+, -, *, /, %, ?, :, =, ==};
+types               =   {bool, string, int, float, double, char, void, };
+method_modifiers    =   {new, public, protected, interval, private, static,
+                        virtual, sealed, override, abstract, extern};
+
+
+<A++>                   ->      <Method>
+<method>                ->      <method_header><method_block_code>
+<method_header>         ->      <method_modifier><type><identifier><method_parameters>
+<method_modifier>       ->      new | public | protected | interval | private | static | virtual | sealed | override | abstract | extern
+<type>                  ->      bool | string | int | float | double | char | void
+<identifier>            ->      {a-z, A-Z} | {a-z, A-Z, _}<identifier_two>
+<identifier_two>        ->      {a-z, A-Z}| {a-z, A-Z}<identifier_two> | <digit> | <digit><identifier_two>
+<digit>                 ->      0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+<method_parameters>     ->      "(" <method_parameter_list> ")"
+<method_parameter_list> ->      <parameter> | <parameter>","<method_parameter_list>
+<parameter>             ->      <declaration>
+<method_block_code>     ->      "{" <block_code> "return" <expression> ";}"
+<block_code>            ->      (<variable_declaration>) | (<expression>";") | <variable_declaration><block_code> | <expression>";"<block_code> 
+
+<declaration>           ->      <type><identifier> | <type><identifier> "=" <expression>
+<expression>            ->      <expression><binary_operator><expression> | <unique_operator><expression> | <expression><unique_operator> | <number> | <identifier>
+<binary_operator>       ->      "+" | "-" | "*" | "%" | "/" | "?" | "=="
+<variable_declaration>  ->      ( <declaration> | <declaration> "," <variable_declaration> ) ";"
+
+

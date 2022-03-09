@@ -49,3 +49,38 @@ method_modifiers    =   {new, public, protected, interval, private, static,
 <variable_declaration>  ->      ( <declaration> | <declaration> "," <variable_declaration> ) ";"
 
 
+
+
+
+
+
+Design an associated grammar to a simplified languaje for designing a familiar geneologic
+three. The structure of a program devveloped on this languaje goes as follows:
+
+arbolgen{
+    <instructions>
+}
+
+<instructions> is formed of varios instructions, separated by an ";"
+each instrucciton can be a declaration, contrucción or drawing of the geneologic
+trhee:
+
+    declaración: arbol <identificador>; puede haber varios identificadores separados
+    por una coma, ejemplo: arbol arbol_1, arbol_2, arbol_n;
+    
+    contrucción: crear (<identificador>, <numero>, <numero>); el identificadores el 
+    identificador del arbol correspondiente a crear, el primer numero es el numero del
+    padre y el segundo del hijo, ejemplo: crear(arbol_1, 52, 12);
+
+    Dibujar:  dibujar(<identificador>);  el identificador es el identificador del
+    arbol a dibujar, ejemplo:   dibujar(arbol_1);
+
+
+arbolgen{
+    arbol primero, segundo;
+    
+    crear(primero, 12, 34);
+    crear(primero, 7, 101);
+    crear(primero, 3,  56);
+    dibujar(primero);
+}

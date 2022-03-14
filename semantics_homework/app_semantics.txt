@@ -46,7 +46,7 @@ method_modifiers    =   {new, public, protected, interval, private, static,
 <declaration>           ->      <type><identifier> | <type><identifier> "=" <expression>
 <expression>            ->      <expression><binary_operator><expression> | <unique_operator><expression> | <expression><unique_operator> | <number> | <identifier>
 <binary_operator>       ->      "+" | "-" | "*" | "%" | "/" | "?" | "=="
-<variable_declaration>  ->      ( <declaration> | <declaration> "," <variable_declaration> ) ";"
+<variable_declaration>  ->       (<declaration> | <declaration> "," <variable_declaration>)  ";"
 
 
 
@@ -84,3 +84,18 @@ arbolgen{
     crear(primero, 3,  56);
     dibujar(primero);
 }
+
+
+
+
+<arbolgen>              ->          "arbolgen{"  <instructions>  "}"
+<instructions>          ->          <single_instruction> | <single_instruction><instructions>
+<single_instruction>    ->          (<declaration> | <construction> | <drawing>)  ";"
+<declaration>           ->          "arbol" ( <identifier>","<declaration_two> ) | <identifier>
+<declaration_two>       ->          <identifier> "," <declaration_two> | <identifier>
+<identifier>            ->          {a-z, A-Z} | {a-z, A-Z, _}<identifier_two>
+<identifier_two>        ->          {a-z, A-Z, "_"}| {a-z, A-Z}<identifier_two> | <digit> | <digit><identifier_two>
+<digit>                 ->          0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+<construction>          ->          "crear("  <identifier> ","  <number> "," <number>  ")"
+<number>                ->          <digit><number> | <digit>
+<drawing>               ->          "dibujar(" <identifier> ")"
